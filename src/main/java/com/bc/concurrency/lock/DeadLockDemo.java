@@ -41,8 +41,5 @@ public class DeadLockDemo {
         DeadLockDemo deadLockDemo = new DeadLockDemo();
         new Thread(() -> deadLockDemo.methodFirst()).start();
         new Thread(() -> deadLockDemo.methodSecond()).start();
-
-        ReentrantLock reentrantLock = new ReentrantLock();
-
     }
 }
