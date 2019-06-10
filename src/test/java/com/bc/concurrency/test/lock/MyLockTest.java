@@ -1,8 +1,10 @@
 package com.bc.concurrency.test.lock;
 
+import com.bc.concurrency.lock.MyLockByAQS;
 import com.bc.concurrency.lock.MyReentrantLock;
 
 import java.util.concurrent.locks.Lock;
+import java.util.concurrent.locks.ReentrantLock;
 
 /**
  * 测试自己实现锁
@@ -12,7 +14,9 @@ import java.util.concurrent.locks.Lock;
  */
 public class MyLockTest {
 
-    private Lock lock = new MyReentrantLock();
+//    private Lock lock = new MyReentrantLock();
+//    private Lock lock = new ReentrantLock();
+    private Lock lock = new MyLockByAQS();
 
     private int value;
 
@@ -44,15 +48,13 @@ public class MyLockTest {
      */
     private static void testLockUseful() {
         MyLockTest t = new MyLockTest();
-        for (int i = 0; i < 5; i++) {
+        for (int i = 0; i < 50; i++) {
             new Thread(() -> {
-                for (int j = 0; j < 10; j++) {
-                    System.out.println(t.getNext());
-                    try {
-                        Thread.sleep(100);
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
-                    }
+                System.out.println(t.getNext());
+                try {
+                    Thread.sleep(100);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
                 }
             }).start();
         }
