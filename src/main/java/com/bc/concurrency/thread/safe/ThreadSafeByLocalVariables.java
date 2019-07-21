@@ -1,5 +1,10 @@
 package com.bc.concurrency.thread.safe;
 
+/**
+ * 通过局部变量解决线程安全性问题
+ *
+ * @author zhou
+ */
 public class ThreadSafeByLocalVariables extends Thread {
 
     @Override
