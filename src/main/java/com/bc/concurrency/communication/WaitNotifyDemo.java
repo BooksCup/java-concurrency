@@ -1,6 +1,7 @@
 package com.bc.concurrency.communication;
 
 /**
+ * 线程间通信
  * wait-notify的例子
  *
  * @author zhou
